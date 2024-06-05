@@ -83,7 +83,7 @@ function bubbleSortByAge(array) {
 
 // console.log(bubbleSortByAge(people));
 
-// -------------------------------------------- find a duplicates in array -----------------------------------------------------------
+// -------------------------------------------- remove a duplicates in array -----------------------------------------------------------
 
 let newArray1 = [2, 1, 8, 6, 1, 2, 2, 3, 12, 10];
 
@@ -97,7 +97,7 @@ let uniqueArray1 = newArray1.filter(
 );
 // console.log(uniqueArray);
 
-// ----------------------------------------------- remove the duplicates from aray ------------------------------------
+// ----------------------------------------------- find the duplicates from aray ------------------------------------
 function removeDuplicat(array) {
   let uniqueArray = [];
   for (let i = 0; i < array.length; i++) {
@@ -121,6 +121,15 @@ function removeDuplicat(array) {
 
 const abc = newArray.reduce((acc, curr) => {
   acc[curr] = (acc[curr] || 0) + 1;
+  return acc;
+}, {});
+
+const newArray4 = newArray3.reduce((acc, curr) => {
+  if (acc[curr]) {
+    acc[curr]++;
+  } else {
+    acc[curr] = 1;
+  }
   return acc;
 }, {});
 
