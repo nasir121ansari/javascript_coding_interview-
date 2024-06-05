@@ -124,7 +124,7 @@ const abc = newArray.reduce((acc, curr) => {
   return acc;
 }, {});
 
-const newArray4 = newArray3.reduce((acc, curr) => {
+const newArray4 = newArray.reduce((acc, curr) => {
   if (acc[curr]) {
     acc[curr]++;
   } else {
