@@ -118,12 +118,13 @@ function removeDuplicat(array) {
 // console.log("here", removeDuplicat(newArray1));
 
 // ---------------------------------- count the dulpicates in array ---------------------------------
-var map = newArray1.reduce(function (prev, cur) {
-  prev[cur] = (prev[cur] || 0) + 1;
-  return prev;
+
+const abc = newArray.reduce((acc, curr) => {
+  acc[curr] = (acc[curr] || 0) + 1;
+  return acc;
 }, {});
 
-console.log("map", map);
+console.log("map", abc);
 
 // ---------------------------------- find if the sum of any two elements in an array is zero, ---------------------------------
 function findPairsWithZeroSum(array) {
