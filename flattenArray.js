@@ -30,6 +30,7 @@ const string = "Mango";
 function Reverse(string) {
   let result = "";
   for (var i = string.length - 1; i >= 0; i--) {
+    // result += string[i]
     result = result + string[i];
   }
   return result;
