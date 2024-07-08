@@ -108,7 +108,7 @@ let uniqueArray1 = newArray1.filter(
 // console.log(uniqueArray);
 
 // ----------------------------------------------- find the duplicates from aray ------------------------------------
-function removeDuplicat(array) {
+function findDuplicat(array) {
   let uniqueArray = [];
   for (let i = 0; i < array.length; i++) {
     let isDuplicate = false;
