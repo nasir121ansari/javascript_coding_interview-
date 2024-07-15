@@ -107,30 +107,51 @@ let uniqueArray1 = newArray1.filter(
 );
 // console.log(uniqueArray);
 
-// ----------------------------------------------- find the duplicates from aray ------------------------------------
-function findDuplicat(array) {
+function removeDuplicates(arr) {
   let uniqueArray = [];
-  for (let i = 0; i < array.length; i++) {
-    let isDuplicate = false;
-    for (let j = 0; j < uniqueArray.length; j++) {
-      if (array[i] === uniqueArray[j]) {
-        isDuplicate = true;
-        break;
-      }
-    }
-    if (!isDuplicate) {
-      uniqueArray.push(array[i]);
+  let seen = new Set(); // Use a Set to track unique elements
+
+  for (let i = 0; i < arr.length; i++) {
+    if (!seen.has(arr[i])) { // Check if the element is not in the Set
+      seen.add(arr[i]); // Add the element to the Set
+      uniqueArray.push(arr[i]); // Add the element to the uniqueArray
     }
   }
+
   return uniqueArray;
 }
 
-// console.log("here", removeDuplicat(newArray1));
+// ----------------------------------------------- find the duplicates from aray ------------------------------------
+function findDuplicates(array) {
+  // Create a Set to keep track of elements we've already seen
+  let seen = new Set();
+
+  // Create another Set to store duplicates
+  let duplicates = new Set();
+
+  // Iterate through each element in the array
+  for (let i = 0; i < array.length; i++) {
+    // Check if the current element is already in the 'seen' set
+    if (seen.has(array[i])) {
+      // If it is, add it to the 'duplicates' set
+      duplicates.add(array[i]);
+    } else {
+      // If it is not, add it to the 'seen' set
+      seen.add(array[i]);
+    }
+  }
+
+  // Convert the 'duplicates' set to an array and return it
+
+  return Array.from(duplicates);
+}
+
+// console.log("here", findDuplicates(newArray1));
 
 // ---------------------------------- count the dulpicates in array ---------------------------------
 
 const abc = newArray.reduce((acc, curr) => {
-  acc[curr] = (acc[curr] || 0) + 1;
+  acc[curr] = acc[curr] ? acc[curr] + 1 : 1
   return acc;
 }, {});
 
