@@ -35,7 +35,7 @@ function Reverse(string) {
   }
   return result;
 }
-console.log("Without Built in Function =====>", Reverse(string));
+// console.log("Without Built in Function =====>", Reverse(string));
 
 // -------------------------------------------------------- swap the value without using third varibale ------------------------------------
 
@@ -164,7 +164,7 @@ const newArray4 = newArray.reduce((acc, curr) => {
   return acc;
 }, {});
 
-console.log("map", abc);
+// console.log("map", abc);
 
 // ---------------------------------- find if the sum of any two elements in an array is zero, ---------------------------------
 function findPairsWithZeroSum(array) {
@@ -184,43 +184,14 @@ function findPairsWithZeroSum(array) {
 // Usage example
 let array22 = [1, 2, -2, 3, -1, 4, -4, 5];
 let zeroSumPairs = findPairsWithZeroSum(array22);
-console.log("Pairs with zero sum:", zeroSumPairs); // Output: [[2, -2], [-1, 1], [4, -4]]
-
-//---------------------------------------------- Program to Reverse the order only even/odd Elements of array -------------------------------
-function reverseEvenElements(arr) {
-  // Step 1: Extract and reverse the even elements
-  let evenElements = arr.filter((x) => x % 2 === 0).reverse();
-
-  // Step 2: Replace the even elements in the original array
-  let evenIndex = 0;
-  return arr.map((x) => (x % 2 === 0 ? evenElements[evenIndex++] : x));
-}
-
-// Example usage:
-let arr = [1, 2, 3, 4, 5, 6, 7, 8];
-let result = reverseEvenElements(arr);
-console.log(result); // Output: [1, 8, 3, 6, 5, 4, 7, 2]
-
-//---------------- 4.Program to generate the Random number from Array------------------------------
-let arraya = [3, 1, 5, 2, 7];
-function RandomArray(array) {
-  return arraya[Math.floor(Math.random() * array.length)];
-}
-console.log(RandomArray(array));
-
-//-------- 5.Program to Rotate the Element of Array -------
-let arrayz = [3, 1, 5, 2, 7];
-function Rotate(array, count) {
-  return [...arrayz.slice(count, array.length), ...array.slice(0, count)];
-}
-console.log(Rotate(array, 3));
+// console.log("Pairs with zero sum:", zeroSumPairs); // Output: [[2, -2], [-1, 1], [4, -4]]
 
 //------------------------------------------------ Program to  sum Elements of array -------------------------------------
 let arrays = [3, 1, 5, 2, 7];
 let sum = arrays.reduce((acc, value) => {
   return (acc += value);
 });
-console.log(sum);
+// console.log(sum);
 
 //------------------------------ Program to get the largest Elements of array-----------------------------------------------
 // let array = [3, 1, 5, 2, 7];
@@ -242,43 +213,9 @@ console.log(sum);
 // }
 // console.log(searchString(array));
 
-// 21. Program to Find the Longest string in An string
-// function longestString() {
-//   let string = "go google gosh";
-//   let arr = string.split(" ");
-//   var array = arr.sort((a, b) => a.length - b.length);
-//   console.log(array);
-//   var longest = "";
-//   for (var i = 0; i < array.length; i++) {
-//     if (array[i].length > longest.length) {
-//       longest = array[i];
-//     }
-//   }
-//   return longest;
-// }
-// console.log(longestString());
 
-// Note: if (array[i].length > longest.length) {
-//   longest = array[i];
-// }
 
-// 22. Program To find longest common string from array of strings
-// function longestCommonString() {
-//   let array = ["go", "google", "gosh"];
-//   var arr = array.sort((a, b) => a.length - b.length);
-//   let result = "";
-//   for (let i = 0; i < arr[0].length; i++) {
-//     if (arr[0][i] === arr[arr.length - 1][i]) {
-//       result += arr[0][i];
-//     }
-//   }
-//   return result;
-// }
-// console.log(longestCommonString());
 
-// Note: if (array[0][i] === array[array.length - 1][i]) {
-//   result += array[0][i];
-// }
 
 //--------------------------------------------Program to  find vowels and its count in a given string ---------------------------
 function vowelCounts() {
@@ -380,7 +317,7 @@ function capitalizeFirstLetterOfEachWord(str) {
 }
 
 const inputString = "hello world this is a test";
-const resultString = capitalizeFirstLetterOfEachWord(inputString);
+// const resultString = capitalizeFirstLetterOfEachWord(inputString);
 // console.log(resultString);
 
 // ------------ find the factorial--------------------------
@@ -394,3 +331,85 @@ function factorial(n) {
 }
 
 // console.log(factorial(5))
+
+
+// ------------ revrer each word of string--------------------------
+// input :- Welcome to the team Nasir Ansari
+// output :- emocleW ot eht maet risaN irasnA
+let str = "Welcome to the team Nasir Ansari"
+let str1 = str.split('').reverse().join('')
+// console.log(str1)
+
+let str2 = str1.split(' ').reverse().join(' ')
+// console.log(str2)
+
+
+function rversreA(str, deli) {
+  return str.split(deli).reverse().join(deli)
+}
+
+let str3 = rversreA(str, '')
+let str4 = rversreA(str3, ' ')
+// console.log(str4)
+
+
+// without using  revrser()
+// Original string
+let originalString = "Welcome to the team Nasir Ansari";
+
+// Split the string into words
+let words = originalString.split(' ');
+
+// Reverse each word
+let reversedWords = words.map(word => {
+  let reversed = '';
+  for (let i = word.length - 1; i >= 0; i--) {
+    reversed += word[i];
+  }
+  return reversed;
+});
+
+// Join the reversed words back into a single string
+let reversedString = reversedWords.join(' ');
+
+// console.log(reversedString);
+
+
+
+// ----------------------------------------- convert nested object into a flat object ----------------------------
+
+const object = {
+  name: 'Nasir',
+  address: {
+    personal: {
+      city: "Jamui"
+    },
+    office: {
+      city: "Bengaluru"
+    }
+  }
+}
+
+// output result
+/*
+let output2 = {
+  student_name: "Nasir",
+  student_address_personal_city: "Jamui",
+  student_address_office_city: "Jamui"
+}
+*/
+
+
+let output2 = {}
+function flatObject(obj, name) {
+  for (let key in obj) {
+    if (typeof obj[key] === "object") {
+      flatObject(obj[key], name + "_" + key)
+    } else {
+      output2[name + "_" + key] = obj[key]
+    }
+  }
+}
+
+flatObject(object, "student")
+console.log(output2)
