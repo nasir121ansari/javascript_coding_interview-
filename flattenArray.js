@@ -194,24 +194,24 @@ let sum = arrays.reduce((acc, value) => {
 // console.log(sum);
 
 //------------------------------ Program to get the largest Elements of array-----------------------------------------------
-// let array = [3, 1, 5, 2, 7];
-// let MaxArray = array.reduce((prev, curr) => {
-//   return Math.max(prev, curr);
-// });
-// console.log(MaxArray);
+let array12 = [3, 1, 5, 2, 7];
+let MaxArray = array12.reduce((prev, curr) => {
+  return Math.max(prev, curr);
+});
+console.log(MaxArray);
 
 // 14. Program to  search the string present in array or not
-// let array = ["3", "1", "5", "2", "7"];
-// let string_Tobe_Searched = "6";
-// function searchString(array) {
-//   for (let val of array) {
-//     if (val === string_Tobe_Searched) {
-//       return "String Found";
-//     }
-//   }
-//   return "String not Found";
-// }
-// console.log(searchString(array));
+let array222 = ["3", "1", "5", "2", "7"];
+let string_Tobe_Searched = "6";
+function searchString(array) {
+  for (let val of array) {
+    if (val === string_Tobe_Searched) {
+      return "String Found";
+    }
+  }
+  return "String not Found";
+}
+// console.log(searchString(array222));
 
 
 
