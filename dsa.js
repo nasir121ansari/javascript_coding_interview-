@@ -167,24 +167,54 @@ const newArray4 = newArray.reduce((acc, curr) => {
 // console.log("map", abc);
 
 // ---------------------------------- find if the sum of any two elements in an array is zero, ---------------------------------
-function findPairsWithZeroSum(array) {
-  let pairs = [];
+let array22 = [1, 2, -2, 3, -1, 4, -4, 5];
+function sumZero(arr) {
+  let result = []
+  let seen = new Set()
+  for (let number of arr) {
+    for (let j = 1; j < arr.length; j++) {
+      if (number + arr[j] === 0) {
+        const pair = [number, arr[j]];
+        const sortedPair = pair.sort((a, b) => a - b).toString()
+        if (!seen.has(sortedPair)) {
+          result.push(pair);
+          seen.add(sortedPair);
+        }
+      }
+    }
 
-  for (let i = 0; i < array.length; i++) {
-    for (let j = i + 1; j < array.length; j++) {
-      if (array[i] + array[j] === 0) {
-        pairs.push([array[i], array[j]]);
+  }
+  return result
+}
+
+console.log(sumZero(array22))
+// console.log("Pairs with zero sum:", zeroSumPairs); // Output: [[2, -2], [-1, 1], [4, -4]]
+
+
+
+let array2222 = [-4, -2, -1, 1, 2, 3, 4, 5]; // Assume the array is sorted
+
+function sumZero(arr) {
+  const result = [];
+  const seenPairs = new Set();
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === 0) {
+        const pairString = `${arr[i]},${arr[j]}`;
+        if (!seenPairs.has(pairString)) {
+          result.push([arr[i], arr[j]]);
+          seenPairs.add(pairString);
+        }
       }
     }
   }
 
-  return pairs;
+  return result;
 }
 
-// Usage example
-let array22 = [1, 2, -2, 3, -1, 4, -4, 5];
-let zeroSumPairs = findPairsWithZeroSum(array22);
-// console.log("Pairs with zero sum:", zeroSumPairs); // Output: [[2, -2], [-1, 1], [4, -4]]
+console.log(sumZero(array2222));
+
 
 //------------------------------------------------ Program to  sum Elements of array -------------------------------------
 let arrays = [3, 1, 5, 2, 7];
