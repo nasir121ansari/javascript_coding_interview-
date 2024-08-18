@@ -71,3 +71,20 @@ setTimeout(() => console.log(6));
 console.log(7);
 
 
+
+// -------------------------------------------------- Question 6 ------------------------------------------------
+
+function myFunction() {
+    const arr = [1, 2, 3, 4, 5];
+    for (var i = 0; i < arr.length; i++) {
+        setTimeout(function () {
+            console.log(i, arr[i]);
+        }, 3000);
+    }
+}
+
+// i = 5,5,5,5,5
+//  arr[i] = undefined, undefined, undefined, undefined, undefined
+myFunction()
+
+
