@@ -334,7 +334,7 @@ function factorial(n) {
 // console.log(factorial(5))
 
 
-// ------------ revrer each word of string--------------------------
+// -------------------------- revrer each word of string -------------------------------------------------------
 // input :- Welcome to the team Nasir Ansari
 // output :- emocleW ot eht maet risaN irasnA
 let str = "Welcome to the team Nasir Ansari"
@@ -413,4 +413,41 @@ function flatObject(obj, name) {
 }
 
 flatObject(object, "student")
-console.log(output2)
+// console.log(output2)
+
+
+
+//---------------------------------------------- find the longest word in a given sentence-------------------------------
+
+
+function findLongestWord(sentence) {
+  return sentence
+    .split(' ')               // Split the sentence into an array of words
+    .reduce((longest, word) =>
+      word.length > longest.length ? word : longest, ''); // Compare and find the longest word
+}
+
+// Example usage:
+const sentence = "JavaScript is a versatile programming language.";
+const longest = findLongestWord(sentence);
+console.log(`The longest word is: ${longest}`);
+
+
+
+//----------------------------------------find the max count of consecutive 1's in an array--------------
+function findMaxConsecutiveOnes(nums) {
+  let maxCount = 0;
+  let currentCount = 0;
+
+  for (let num of nums) {
+    currentCount = (num === 1) ? currentCount + 1 : 0;
+    maxCount = Math.max(maxCount, currentCount);
+  }
+
+  return maxCount;
+}
+
+// Example usage:
+const nums = [1, 1, 0, 1, 1, 1, 0, 1];
+const maxConsecutiveOnes = findMaxConsecutiveOnes(nums);
+console.log(`The maximum count of consecutive 1s is: ${maxConsecutiveOnes}`);
