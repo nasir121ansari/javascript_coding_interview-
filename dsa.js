@@ -1,32 +1,65 @@
-// ------------------------------------------------------------------------------------ Flatten array -------------------------------------------------
-let array = [1, 2, 3, [5, 6, [7, 8]], 9, 10];
+// 1.Write a JavaScript program to flatten a nested Array
 
+let array = [1, 2, 3, [5, 6, [7, 8]], 9, 10];
+//first way 
 let output = ""; // returning as string
 let output1 = [];
-function flateen(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (Array.isArray(arr[i])) {
-      //recursive call
-      flateen(arr[i]);
+function flatten(arr) {
+  for (let num of arr) {
+    if (Array.isArray(num)) {
+      flatten(num)
     } else {
-      // output += arr[i]
-      output1.push(arr[i]);
+      output.push(num)
     }
   }
-
-  return output1;
+  return output
 }
 
-// console.log(flateen(array));
+console.log(flatten(array))
 
-// Using in built method
+// second way Using in built method
 let flatArray = array.flat(Infinity);
 // console.log(flatArray);
 
-// ------------------------------------------------------------------- reverese a string ----------------------------------------------------------------
+
+
+// 2. Write a JavaScript program to find the largest element in a nested array.
+
+let array11 = [[3, 4, 58], [709, 8, 9, [10, 11]], [111, 2]]
+
+// first way
+let output11 = [];
+function flatten(arr) {
+  for (let num of arr) {
+    if (Array.isArray(num)) {
+      flatten(num)
+    } else {
+      output.push(num)
+    }
+  }
+  return output1
+}
+
+const flatArrays = flatten(array11)
+let MaxArray = flatArrays.reduce((prev, curr) => {
+  return Math.max(prev, curr);
+});
+console.log(MaxArray);
+
+// using in built method 
+const max = array.flat(Infinity).reduce((prev, cur) => {
+  return Math.max(prev, cur)
+})
+console.log(max)
+
+
+// 3. Reverse a string
+
+//using in built method 
 const string = "Mango";
 // console.log([...string].reverse().join(""));
 
+// Without Built in Function
 function Reverse(string) {
   let result = "";
   for (var i = string.length - 1; i >= 0; i--) {
@@ -37,7 +70,7 @@ function Reverse(string) {
 }
 // console.log("Without Built in Function =====>", Reverse(string));
 
-// -------------------------------------------------------- swap the value without using third varibale ------------------------------------
+// 4.swap the value without using third varibale 
 
 let a = 5;
 let b = 10;
@@ -47,19 +80,14 @@ let b = 10;
 // console.log(a); // Output: 10
 // console.log(b); // Output: 5
 
-// --------------------------------------------------------------------sort an array --------------------------------------------------------
+// 5. sort an array 
 
 let newArray = [2, 1, 8, 6, 1, 2, 2, 3, 12, 10];
 
 // using in built method
-// console.log(
-//   shortArray.sort((a, b) => {
-//     return a - b;
-//   })
-// );
+console.log(newArray.sort((a, b) => a - b))
 
 // using function
-
 function shortArray(array) {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length; j++) {
@@ -73,7 +101,58 @@ function shortArray(array) {
 
 // console.log(shortArray(newArray));
 
-// -------------------------------------------------------------------- sort an object --------------------------------------------------------
+// 6. Given 2 arrays that are sorted [0,3,4,31] and [4,6,30]. Merge them and sort [0,3,4,4,6,30,31]
+
+
+const array1 = [0, 3, 4, 31];
+const array2 = [4, 6, 30];
+// first way 
+const mergedAndSortedArray = array1.concat(array2).sort((a, b) => a - b)
+const mergedAndSortedArray1 = [...array1, ...array2].sort((a, b) => a - b)
+
+console.log(mergedAndSortedArray); // Output: [0, 3, 4, 4, 6, 30, 31]
+console.log(mergedAndSortedArray1); // Output: [0, 3, 4, 4, 6, 30, 31]
+
+// second way
+
+function mergeSortedArrays(arr1, arr2) {
+  const mergedArray = [];
+  let i = 0;
+  let j = 0;
+
+  // Compare elements from both arrays and add the smaller one to the merged array
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      mergedArray.push(arr1[i]);
+      i++;
+    } else {
+      mergedArray.push(arr2[j]);
+      j++;
+    }
+  }
+
+  // If there are remaining elements in arr1, add them to the merged array
+  while (i < arr1.length) {
+    mergedArray.push(arr1[i]);
+    i++;
+  }
+
+  // If there are remaining elements in arr2, add them to the merged array
+  while (j < arr2.length) {
+    mergedArray.push(arr2[j]);
+    j++;
+  }
+
+  return mergedArray;
+}
+
+console.log(mergeSortedArrays(array1, array2));
+
+
+
+
+
+// 7. sort an object 
 const people = [
   { name: "John", age: 30 },
   { name: "Jane", age: 25 },
@@ -93,7 +172,7 @@ function bubbleSortByAge(array) {
 
 // console.log(bubbleSortByAge(people));
 
-// -------------------------------------------- remove a duplicates in array -----------------------------------------------------------
+// 8. remove a duplicates in array 
 
 let newArray1 = [2, 1, 8, 6, 1, 2, 2, 3, 12, 10];
 
@@ -121,7 +200,30 @@ function removeDuplicates(arr) {
   return uniqueArray;
 }
 
-// ----------------------------------------------- find the duplicates from aray ------------------------------------
+
+// 9. Remove duplicates from object / Write logic to get unique objects from below array 
+
+const inputArray = [{ name: "sai" }, { name: "Nang" }, { name: "sai" }, { name: "Nang" }, { name: "111111" }];
+
+function getUniqueObjects(arr) {
+  let seen = new Set()
+  let uinque = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (!seen.has(arr[i].name)) {
+      seen.add(arr[i].name)
+      uinque.push(arr[i])
+    }
+  }
+
+  return uinque
+}
+
+const uniqueObjects = getUniqueObjects(inputArray);
+console.log(uniqueObjects);
+
+
+
+// 10. find the duplicates from array
 function findDuplicates(array) {
   // Create a Set to keep track of elements we've already seen
   let seen = new Set();
@@ -148,25 +250,29 @@ function findDuplicates(array) {
 
 // console.log("here", findDuplicates(newArray1));
 
-// ---------------------------------- count the dulpicates in array ---------------------------------
+// 11. count the dulpicates in array 
 
 const abc = newArray.reduce((acc, curr) => {
   acc[curr] = acc[curr] ? acc[curr] + 1 : 1
   return acc;
 }, {});
 
-const newArray4 = newArray.reduce((acc, curr) => {
-  if (acc[curr]) {
-    acc[curr]++;
-  } else {
-    acc[curr] = 1;
-  }
-  return acc;
-}, {});
 
-// console.log("map", abc);
 
-// ---------------------------------- find if the sum of any two elements in an array is zero, ---------------------------------
+// 12.  write a javascript function to count the occurrences of each character in the string
+
+const inputString1 = "javascript";
+const count = inputString1.split('').reduce((acc, curr) => {
+  acc[curr] = acc[curr] ? acc[curr] + 1 : 1
+  return acc
+
+}, {})
+
+console.log(count)
+
+
+
+// 13. find if the sum of any two elements in an array is zero
 let array22 = [1, 2, -2, 3, -1, 4, -4, 5];
 function sumFirstZero(arr) {
   let result = [];
@@ -187,21 +293,16 @@ function sumFirstZero(arr) {
 // console.log("Pairs with zero sum:", zeroSumPairs); // Output: [[2, -2], [-1, 1], [4, -4]]
 
 
-//------------------------------------------------ Program to  sum Elements of array -------------------------------------
+// 14. Program to  sum Elements of array
 let arrays = [3, 1, 5, 2, 7];
 let sum = arrays.reduce((acc, value) => {
   return (acc += value);
 });
 // console.log(sum);
 
-//------------------------------ Program to get the largest Elements of array-----------------------------------------------
-let array12 = [3, 1, 5, 2, 7];
-let MaxArray = array12.reduce((prev, curr) => {
-  return Math.max(prev, curr);
-});
-console.log(MaxArray);
 
-// 14. Program to  search the string present in array or not
+
+// 15.  Program to  search the string present in array or not 
 let array222 = ["3", "1", "5", "2", "7"];
 let string_Tobe_Searched = "6";
 function searchString(array) {
@@ -214,11 +315,7 @@ function searchString(array) {
 }
 // console.log(searchString(array222));
 
-
-
-
-
-//--------------------------------------------Program to  find vowels and its count in a given string ---------------------------
+// 16. Program to  find vowels and its count in a given string 
 function vowelCounts() {
   vowels = ["a", "i", "e", "o", "u"];
   var str = "priya";
@@ -233,7 +330,7 @@ function vowelCounts() {
 }
 // vowelCounts();
 
-//-------------------------------- Program to check the given string is palindrome or not----------------------------
+// 17. Program to check the given string is palindrome or not
 
 // A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward  e.g "madam", "level"
 
@@ -255,21 +352,43 @@ let testStr2 = "hello";
 // console.log(isPalindrome(testStr1)); // Output: true
 // console.log(isPalindrome(testStr2)); // Output: false
 
-//------------------------------ Program to check the given strings are anagram or not -------------------------
-function isAnagram(a, b) {
-  let aa = a.toLowerCase().split("").sort().join("");
-  let bb = b.toLowerCase().split("").sort().join("");
-  return aa === bb;
+// 18.  Program to check the given strings are anagram or not  OR    Given two strings. Find if one string can be formed by rearranging the letters of other string.
+function areAnagrams(str1, str2) {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  let sortedStr1 = str1.split('').sort().join('');
+  let sortedStr2 = str2.split('').sort().join('');
+
+  return sortedStr1 === sortedStr2;
 }
+
+str1 = "hello";
+str2 = "world";
+console.log(areAnagrams(str1, str2)); // false
+
 // console.log(isAnagram("mary", "army"));
 
-// 5.Program for Fibonnaci Series
+// 19.Program for Fibonnaci Series
+function generateFibonacci(numTerms) {
+  if (numTerms <= 0) return [];
+  if (numTerms === 1) return [0];
 
+  const fibonacciSequence = [0, 1];
 
+  for (let i = 2; i < numTerms; i++) {
+    const nextTerm = fibonacciSequence[i - 1] + fibonacciSequence[i - 2];
+    fibonacciSequence.push(nextTerm);
+  }
 
-//--------------------------------------- Program to check number primeNumber ---------
+  return fibonacciSequence;
+}
+const numTerms = 10;
+const fibonacci = generateFibonacci(numTerms);
 
+console.log(fibonacci); // Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
+// 20.  Program to check number primeNumber 
 function isPrime(num) {
   if (num <= 1) {
     return false; // Numbers less than or equal to 1 are not prime
@@ -289,40 +408,35 @@ function isPrime(num) {
 // console.log(isPrime(17)); // Output: true
 // console.log(isPrime(18)); // Output: false
 
-/*
-Write a program that prints the numbers from 1 to 100. But for multiples of three, print "Fizz" instead of the number, and for the multiples of five, print "Buzz".
- For numbers which are multiples of both three and five, print "FizzBuzz"
-*/
 
-
-// for (let i = 1; i <= 100; i++) {
-//   if (i % 3 === 0) {
-//     console.log(i, "Fizz")
-//   }
-//   if (i % 5 === 0) {
-//     console.log(i, "Buzz")
-//   }
-
-//   if (i % 5 === 0 && i % 3 === 0) {
-//     console.log(i, "FizzBuzz")
-//   }
-// }
+// 21. Write a program that prints the numbers from 1 to 100. But for multiples of three, print "Fizz" instead of the number, and for the multiples of five, print "Buzz". For numbers which are multiples of both three and five, print "FizzBuzz" 
 
 
 
-//---------------------------- Program to Uppercase of each first letter of a words using map function --------
-function capitalizeFirstLetterOfEachWord(str) {
-  return str.split(' ')
-    .map(words => words.charAt(0).toUpperCase() + words.slice(1))
-    .join(' ')
+for (let i = 1; i <= 100; i++) {
+  if (i % 3 === 0) {
+    console.log(i, "Fizz")
+  }
+  if (i % 5 === 0) {
+    console.log(i, "Buzz")
+  }
+
+  if (i % 5 === 0 && i % 3 === 0) {
+    console.log(i, "FizzBuzz")
+  }
 }
 
+
+
+// 22. Program to Uppercase of each first letter of a words using map function 
+
 const inputString = "hello world this is a test";
-// const resultString = capitalizeFirstLetterOfEachWord(inputString);
-// console.log(resultString);
 
-// ------------ find the factorial--------------------------
+const capitalizeFirstLetterOfEachWord = inputString.split(' ').map((words) => words.charAt(0).toUpperCase() + words.slice(1)).join(' ')
+// console.log(capitalizeFirstLetterOfEachWord);
 
+
+// 23. find the factorial
 function factorial(n) {
   if (n <= 1) {
     return 1; // Base case: factorial of 0 or 1 is 1
@@ -334,7 +448,7 @@ function factorial(n) {
 // console.log(factorial(5))
 
 
-// -------------------------- revrer each word of string -------------------------------------------------------
+// 24.  revrer each word of string 
 // input :- Welcome to the team Nasir Ansari
 // output :- emocleW ot eht maet risaN irasnA
 let str = "Welcome to the team Nasir Ansari"
@@ -377,7 +491,7 @@ let reversedString = reversedWords.join(' ');
 
 
 
-// ----------------------------------------- convert nested object into a flat object ----------------------------
+// 25. convert nested object into a flat object 
 
 const object = {
   name: 'Nasir',
@@ -417,7 +531,7 @@ flatObject(object, "student")
 
 
 
-//---------------------------------------------- find the longest word in a given sentence-------------------------------
+// 26. find the longest word in a given sentence
 
 
 function findLongestWord(sentence) {
@@ -434,7 +548,7 @@ console.log(`The longest word is: ${longest}`);
 
 
 
-//----------------------------------------find the max count of consecutive 1's in an array--------------
+// 27. find the max count of consecutive 1's in an array
 function findMaxConsecutiveOnes(nums) {
   let maxCount = 0;
   let currentCount = 0;
@@ -451,3 +565,62 @@ function findMaxConsecutiveOnes(nums) {
 const nums = [1, 1, 0, 1, 1, 1, 0, 1];
 const maxConsecutiveOnes = findMaxConsecutiveOnes(nums);
 console.log(`The maximum count of consecutive 1s is: ${maxConsecutiveOnes}`);
+
+
+
+
+// 28. Write a JavaScript function that takes an array of numbers and returns a new array with only the even numbers.
+
+function filterEvenNumbers(arr) {
+  return arr.filter(number => number % 2 === 0);
+}
+
+// Example usage:
+const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const evenNumbers = filterEvenNumbers(numbersArray);
+
+console.log(evenNumbers); // Output: [2, 4, 6, 8, 10]
+
+// 29. Create a function which will accepts two arrays arr1 and arr2. The function should return true if every value in arr1 has its corresponding value squared in array2. The frequency of values must be same.
+function compareArrays(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+
+  // Sort both arrays
+  arr1.sort((a, b) => a - b);
+  arr2.sort((a, b) => a - b);
+
+  // Compare each element of arr1 squared to each element of arr2
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] ** 2 !== arr2[i]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+// Example usage
+let arr1 = [1, 2, 3, 2];
+let arr2 = [1, 4, 9, 4];
+console.log(compareArrays(arr1, arr2)); // true
+
+
+// 30. Write a function which converts string input into an object i/p -("a.b.c", "someValue"); o/p- { a: { b: { c: "someValue" } } }---------
+function stringToNestedObject(path, value) {
+  const keys = path.split('.');  // Split the string into an array of keys
+  return keys.reduceRight((acc, key) => ({ [key]: acc }), value);
+}
+
+// Example usage
+const resultss = stringToNestedObject("a.b.c", "someValue");
+console.log(resultss);
+
+
+
+
+
+
+
+
