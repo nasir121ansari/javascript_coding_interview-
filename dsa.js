@@ -188,15 +188,11 @@ let uniqueArray1 = newArray1.filter(
 
 function removeDuplicates(arr) {
   let uniqueArray = [];
-  let seen = new Set(); // Use a Set to track unique elements
-
   for (let i = 0; i < arr.length; i++) {
-    if (!seen.has(arr[i])) { // Check if the element is not in the Set
-      seen.add(arr[i]); // Add the element to the Set
-      uniqueArray.push(arr[i]); // Add the element to the uniqueArray
+    if (!uniqueArray.includes(arr[i])) { 
+      uniqueArray.push(arr[i]); 
     }
   }
-
   return uniqueArray;
 }
 
@@ -221,6 +217,21 @@ function getUniqueObjects(arr) {
 const uniqueObjects = getUniqueObjects(inputArray);
 console.log(uniqueObjects);
 
+
+function getUniqueObjects1(arr) {
+  let unique = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (!unique.some(obj => obj.name === arr[i].name)) {
+      unique.push(arr[i]);
+    }
+  }
+
+  return unique;
+}
+
+const uniqueObjects1 = getUniqueObjects1(inputArray);
+console.log(uniqueObjects1);
 
 
 // 10. find the duplicates from array

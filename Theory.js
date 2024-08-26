@@ -140,9 +140,36 @@ setTimeout(() => {
     console.log('Interval stopped');
 }, 10000);
 
+*/
 
 
 
+
+// -------------------------------- find and filte 
+/*
+find Method
+Purpose: To find the first element in an array that satisfies a given condition.
+Returns: The first element that matches the condition. If no element matches, it returns undefined.
+*/
+
+const numbers = [1, 2, 3, 4, 5];
+
+const found = numbers.find(num => num > 3);
+console.log(found); // Output: 4
+
+
+
+/*
+
+Purpose: To create a new array containing all elements that satisfy a given condition.
+Returns: A new array with all elements that match the condition. If no elements match, it returns an empty array.
+
+*/
+
+const numbers1 = [1, 2, 3, 4, 5];
+
+const filtered = numbers1.filter(num => num > 3);
+console.log(filtered); // Output: [4, 5]
 
 
 
