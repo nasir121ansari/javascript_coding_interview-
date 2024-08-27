@@ -631,6 +631,40 @@ console.log(resultss);
 
 
 
+// 30.
+
+let items = [
+  {
+  subItems : [
+  {id : 1, itemName: "Item1"},
+  {id : 2, itemName: "Item2"},
+  {id : 1, itemName: "Item1"}
+                  ]
+  },
+  {
+  subItems : [
+  {id : 1, itemName: "Item1"},
+  {id : 2, itemName: "Item2"},
+  {id : 1, itemName: "Item1"}
+                  ]
+  }
+  ]
+  /*
+  Filter the objects with id 1
+  Expected output is : 
+  [
+  {id : 1, itemName: ""Item1""},
+  {id : 1, itemName: ""Item1""},
+  {id : 1, itemName: ""Item1""},
+  {id : 1, itemName: ""Item1""},
+  ]
+  */
+  
+  const filteredItems = items.flatMap(obj => obj.subItems.filter(item => item.id=== 1))
+  console.log(filteredItems)
+
+
+
 
 
 
