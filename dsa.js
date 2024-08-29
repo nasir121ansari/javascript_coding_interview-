@@ -682,6 +682,26 @@ let items = [
   const filteredItems = items.flatMap(obj => obj.subItems.filter(item => item.id=== 1))
   console.log(filteredItems)
 
+// 31.
+  const matrix = [
+    [1,2,3,4],
+    [5,6,7,8],
+    [9,10,11,12],
+    [13,14,15,16]
+    ]
+const dimension = 4
+function sumOfDiagonal (matrix,dimension) {
+    let sum = 0;
+    let sum1 = 0
+    for(let i=0;i<dimension;i++){
+        sum += matrix[i][i]
+        sum1 +=matrix[i][dimension -i -1]
+    }
+    
+    return sum + sum1
+}
+
+console.log(sumOfDiagonal(matrix,dimension))
 
 
 
