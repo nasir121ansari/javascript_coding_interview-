@@ -619,14 +619,15 @@ console.log(compareArrays(arr1, arr2)); // true
 
 
 // 30. Write a function which converts string input into an object i/p -("a.b.c", "someValue"); o/p- { a: { b: { c: "someValue" } } }---------
-function stringToNestedObject(path, value) {
-  const keys = path.split('.');  // Split the string into an array of keys
-  return keys.reduceRight((acc, key) => ({ [key]: acc }), value);
-}
-
-// Example usage
-const resultss = stringToNestedObject("a.b.c", "someValue");
-console.log(resultss);
+let strVal = "a,1,b,2,c,3"
+// output={a:1, b:2,c:3}
+const convertToAnobject = strVal.split(',').reduce((acc,curr,index,arr) => {
+  if(index % 2 === 0){
+      acc[curr] = parseInt(arr[index + 1])
+  }
+  return acc  
+},{})
+console.log(convertToAnobject)
 
 
 
