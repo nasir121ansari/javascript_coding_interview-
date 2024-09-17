@@ -540,6 +540,46 @@ function flatObject(obj, name) {
 flatObject(object, "student")
 // console.log(output2)
 
+const objectss = {
+  a: 1,
+  b: {
+    c: 2,
+    d: {
+      e: 3,
+      f: 4
+    }
+  },
+  g: 5
+}
+/*
+out put  = {
+    {
+  "a": 1,
+  "b.c": 2,
+  "b.d.e": 3,
+  "b.d.f": 4,
+  "g": 5
+}
+    
+*/
+
+let output3 = {};
+
+function flatObject(obj, parentKey = '') {
+  for (let key in obj) {
+    const value = obj[key];
+    const newKey = parentKey ? `${parentKey}.${key}` : key;
+
+    if (typeof value === 'object' && value !== null) {
+      flatObject(value, newKey);
+    } else {
+      output3[newKey] = value;
+    }
+  }
+  
+  return output2;
+}
+
 
 
 // 26. find the longest word in a given sentence
@@ -722,7 +762,27 @@ console.log(doubled); // Output: [2, 4, 6, 8, 10]
 
 
 
+/*
+33.Write a function that takes N and subsequent N parameters and gives the multiplication result. 
+reallyCoolFn(N)(n1)(n2)(n3)(ni) // output → n1 * n2 * … * ni
+reallyCoolFn(3)(2)(5)(8) // output → 80
+reallyCoolFn(2)(1)(4) // output → 4/
+*/
 
+function reallyCoolFn(N) {
+  let product = 1;
 
+  function next(n) {
+      product *= n;
+      N--;
+      return N > 0 ? next : product;
+  }
+
+  return next;
+}
+
+// Example usage:
+console.log(reallyCoolFn(3)(2)(5)(8)); // Output: 80
+console.log(reallyCoolFn(2)(1)(4));    // Output: 4
 
 
