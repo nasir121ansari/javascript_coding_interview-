@@ -1,9 +1,7 @@
-// 1.Write a JavaScript program to flatten a nested Array
+// 1.Write a JavaScript program to flatten a nested Array / Write a JavaScript program to find the largest element in a nested array.
 
 let array = [1, 2, 3, [5, 6, [7, 8]], 9, 10];
-//first way 
-let output = ""; // returning as string
-let output1 = [];
+let output = [];
 function flatten(arr) {
   for (let num of arr) {
     if (Array.isArray(num)) {
@@ -17,58 +15,150 @@ function flatten(arr) {
 
 console.log(flatten(array))
 
-// second way Using in built method
+// find the largest element in a nested array
+const flatArrays = flatten(array)
+let largestElemnet = flatArrays.reduce((prev, curr) => {
+  return Math.max(prev, curr);
+});
+console.log(largestElemnet);
+
+
 let flatArray = array.flat(Infinity);
 // console.log(flatArray);
 
 
+// 2. convert nested object into a flat object 
 
-// 2. Write a JavaScript program to find the largest element in a nested array.
-
-let array11 = [[3, 4, 58], [709, 8, 9, [10, 11]], [111, 2]]
-
-// first way
-let output11 = [];
-function flatten(arr) {
-  for (let num of arr) {
-    if (Array.isArray(num)) {
-      flatten(num)
-    } else {
-      output.push(num)
+const object = {
+  name: 'Nasir',
+  address: {
+    personal: {
+      city: "Jamui"
+    },
+    office: {
+      city: "Bengaluru"
     }
   }
-  return output1
 }
 
-const flatArrays = flatten(array11)
-let MaxArray = flatArrays.reduce((prev, curr) => {
-  return Math.max(prev, curr);
-});
-console.log(MaxArray);
-
-// using in built method 
-const max = array.flat(Infinity).reduce((prev, cur) => {
-  return Math.max(prev, cur)
-})
-console.log(max)
-
-
-// 3. Reverse a string
-
-//using in built method 
-const string = "Mango";
-// console.log([...string].reverse().join(""));
-
-// Without Built in Function
-function Reverse(string) {
-  let result = "";
-  for (var i = string.length - 1; i >= 0; i--) {
-    // result += string[i]
-    result = result + string[i];
+// output result
+/*
+let output2 = {
+  student_name: "Nasir",
+  student_address_personal_city: "Jamui",
+  student_address_office_city: "Jamui"
+}
+*/
+let output2 = {}
+function flatObject(obj, name) {
+  for (let key in obj) {
+    if (typeof obj[key] === "object") {
+      flatObject(obj[key], name + "_" + key)
+    } else {
+      output2[name + "_" + key] = obj[key]
+    }
   }
-  return result;
 }
-// console.log("Without Built in Function =====>", Reverse(string));
+
+flatObject(object, "student")
+// console.log(output2)
+
+
+const flattenObjs = (ob, name) => {
+  let final = {};
+  for (const i in ob) {
+    if (typeof ob[i] === 'object' && ob[i] !== null && !Array.isArray(ob[i])) {
+      const temp = flattenObj(ob[i], name + "_" + i); // Recursive call
+      for (const j in temp) {
+        final[j] = temp[j]; // Copy flattened keys
+      }
+    } else {
+      final[name + "_" + i] = ob[i]; // Add simple key-value pair
+    }
+  }
+  return final;
+};
+
+
+const objectss = {
+  a: 1,
+  b: {
+    c: 2,
+    d: {
+      e: 3,
+      f: 4
+    }
+  },
+  g: 5
+}
+/*
+out put  = {
+    {
+  "a": 1,
+  "b.c": 2,
+  "b.d.e": 3,
+  "b.d.f": 4,
+  "g": 5
+}
+    
+*/
+
+const flattenObj = (ob) => {
+	let final = {};
+	for (const i in ob) {
+		if ((typeof ob[i]) === 'object') {
+			const temp = flattenObj(ob[i]);
+			for (const j in temp) {
+				final[i + '_' + j] = temp[j];
+			}
+		}
+		else {
+			final[i] = ob[i];
+		}
+	}
+	return final;
+};
+
+// 3.  revrer each word of string 
+// input :- Welcome to the team Nasir Ansari
+// output :- emocleW ot eht maet risaN irasnA
+let str = "Welcome to the team Nasir Ansari"
+let str1 = str.split('').reverse().join('')
+// console.log(str1)
+
+let str2 = str1.split(' ').reverse().join(' ')
+// console.log(str2)
+
+
+function rversreA(str, deli) {
+  return str.split(deli).reverse().join(deli)
+}
+
+let str3 = rversreA(str, '')
+let str4 = rversreA(str3, ' ')
+// console.log(str4)
+
+
+// without using  revrser()
+// Original string
+let originalString = "Welcome to the team Nasir Ansari";
+
+// Split the string into words
+let words = originalString.split(' ');
+
+// Reverse each word
+let reversedWords = words.map(word => {
+  let reversed = '';
+  for (let i = word.length - 1; i >= 0; i--) {
+    reversed += word[i];
+  }
+  return reversed;
+});
+
+// Join the reversed words back into a single string
+let reversedString = reversedWords.join(' ');
+
+// console.log(reversedString);
 
 // 4.swap the value without using third varibale 
 
@@ -459,126 +549,6 @@ function factorial(n) {
 // console.log(factorial(5))
 
 
-// 24.  revrer each word of string 
-// input :- Welcome to the team Nasir Ansari
-// output :- emocleW ot eht maet risaN irasnA
-let str = "Welcome to the team Nasir Ansari"
-let str1 = str.split('').reverse().join('')
-// console.log(str1)
-
-let str2 = str1.split(' ').reverse().join(' ')
-// console.log(str2)
-
-
-function rversreA(str, deli) {
-  return str.split(deli).reverse().join(deli)
-}
-
-let str3 = rversreA(str, '')
-let str4 = rversreA(str3, ' ')
-// console.log(str4)
-
-
-// without using  revrser()
-// Original string
-let originalString = "Welcome to the team Nasir Ansari";
-
-// Split the string into words
-let words = originalString.split(' ');
-
-// Reverse each word
-let reversedWords = words.map(word => {
-  let reversed = '';
-  for (let i = word.length - 1; i >= 0; i--) {
-    reversed += word[i];
-  }
-  return reversed;
-});
-
-// Join the reversed words back into a single string
-let reversedString = reversedWords.join(' ');
-
-// console.log(reversedString);
-
-
-
-// 25. convert nested object into a flat object 
-
-const object = {
-  name: 'Nasir',
-  address: {
-    personal: {
-      city: "Jamui"
-    },
-    office: {
-      city: "Bengaluru"
-    }
-  }
-}
-
-// output result
-/*
-let output2 = {
-  student_name: "Nasir",
-  student_address_personal_city: "Jamui",
-  student_address_office_city: "Jamui"
-}
-*/
-
-
-let output2 = {}
-function flatObject(obj, name) {
-  for (let key in obj) {
-    if (typeof obj[key] === "object") {
-      flatObject(obj[key], name + "_" + key)
-    } else {
-      output2[name + "_" + key] = obj[key]
-    }
-  }
-}
-
-flatObject(object, "student")
-// console.log(output2)
-
-const objectss = {
-  a: 1,
-  b: {
-    c: 2,
-    d: {
-      e: 3,
-      f: 4
-    }
-  },
-  g: 5
-}
-/*
-out put  = {
-    {
-  "a": 1,
-  "b.c": 2,
-  "b.d.e": 3,
-  "b.d.f": 4,
-  "g": 5
-}
-    
-*/
-
-let output3 = {};
-
-function flatObject(obj, parentKey = '') {
-  for (let key in obj) {
-    const value = obj[key];
-    const newKey = parentKey ? `${parentKey}.${key}` : key;
-
-    if (typeof value === 'object' && value !== null) {
-      flatObject(value, newKey);
-    } else {
-      output3[newKey] = value;
-    }
-  }
-  
-  return output2;
-}
 
 
 
