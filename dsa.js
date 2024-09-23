@@ -191,7 +191,26 @@ function shortArray(array) {
 
 // console.log(shortArray(newArray));
 
-// 6. Given 2 arrays that are sorted [0,3,4,31] and [4,6,30]. Merge them and sort [0,3,4,4,6,30,31]
+
+// 6. sort an object 
+const people = [
+  { name: "John", age: 30 },
+  { name: "Jane", age: 25 },
+  { name: "Mike", age: 35 },
+];
+
+function bubbleSortByAge(array) {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      if (array[j].age < array[i].age) {
+        [array[j], array[i]] = [array[i], array[j]];
+      }
+    }
+  }
+  return array;
+}
+
+// 7. Given 2 arrays that are sorted [0,3,4,31] and [4,6,30]. Merge them [0,3,4,4,6,30,31]
 
 
 const array1 = [0, 3, 4, 31];
@@ -238,27 +257,6 @@ function mergeSortedArrays(arr1, arr2) {
 
 console.log(mergeSortedArrays(array1, array2));
 
-
-
-
-
-// 7. sort an object 
-const people = [
-  { name: "John", age: 30 },
-  { name: "Jane", age: 25 },
-  { name: "Mike", age: 35 },
-];
-
-function bubbleSortByAge(array) {
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array.length; j++) {
-      if (array[j].age < array[i].age) {
-        [array[j], array[i]] = [array[i], array[j]];
-      }
-    }
-  }
-  return array;
-}
 
 // console.log(bubbleSortByAge(people));
 
