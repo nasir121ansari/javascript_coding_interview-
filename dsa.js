@@ -357,6 +357,36 @@ const abc = newArray.reduce((acc, curr) => {
 }, {});
 
 
+// 32.
+// Custom map function implementation / polyfill of map
+Array.prototype.myMap = function(cb){
+  console.log('this',this)
+  let temp = [];
+  for(let i=0;i< this.length;i++){
+      temp.push(cb(this[i],i,this))
+  }
+  return temp
+}
+
+let array11 = [1,2,3]
+console.log(array11.myMap((item) =>  item*2))
+
+// find the largest three numbers in an array
+function largestThree(arr) {
+  // Remove duplicates and sort in descending order
+  const uniqueArr = [...new Set(arr)];
+  uniqueArr.sort((a, b) => b - a);
+
+  // Get the largest three numbers
+  return uniqueArr.slice(0, 3);
+}
+
+// Example usage
+const numbers = [4, 1, 7, 2, 3, 8, 4, 5];
+console.log(largestThree(numbers)); // Output: [8, 7, 5]
+
+
+
 
 // 12.  write a javascript function to count the occurrences of each character in the string
 
@@ -712,21 +742,8 @@ function sumOfDiagonal (matrix,dimension) {
 console.log(sumOfDiagonal(matrix,dimension))
 
 
-// 32.
-// Custom map function implementation
-function customMap(array, callback) {
-  const result = [];
-  for (let i = 0; i < array.length; i++) {
-      result.push(callback(array[i], i, array));
-  }
-  return result;
-}
 
-// Usage example
-const numbers = [1, 2, 3, 4, 5];
-const doubled = customMap(numbers, (num) => num * 2);
 
-console.log(doubled); // Output: [2, 4, 6, 8, 10]
 
 
 
