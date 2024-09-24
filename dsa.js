@@ -324,20 +324,12 @@ console.log(uniqueObjects1);
 
 // 10. find the duplicates from array
 function findDuplicates(array) {
-  // Create a Set to keep track of elements we've already seen
   let seen = new Set();
-
-  // Create another Set to store duplicates
   let duplicates = new Set();
-
-  // Iterate through each element in the array
   for (let i = 0; i < array.length; i++) {
-    // Check if the current element is already in the 'seen' set
     if (seen.has(array[i])) {
-      // If it is, add it to the 'duplicates' set
       duplicates.add(array[i]);
     } else {
-      // If it is not, add it to the 'seen' set
       seen.add(array[i]);
     }
   }
@@ -373,7 +365,6 @@ console.log(array11.myMap((item) =>  item*2))
 
 // find the largest three numbers in an array
 function largestThree(arr) {
-  // Remove duplicates and sort in descending order
   const uniqueArr = [...new Set(arr)];
   uniqueArr.sort((a, b) => b - a);
 
