@@ -349,19 +349,6 @@ const abc = newArray.reduce((acc, curr) => {
 }, {});
 
 
-// 32.
-// Custom map function implementation / polyfill of map
-Array.prototype.myMap = function(cb){
-  console.log('this',this)
-  let temp = [];
-  for(let i=0;i< this.length;i++){
-      temp.push(cb(this[i],i,this))
-  }
-  return temp
-}
-
-let array11 = [1,2,3]
-console.log(array11.myMap((item) =>  item*2))
 
 // find the largest three numbers in an array
 function largestThree(arr) {
