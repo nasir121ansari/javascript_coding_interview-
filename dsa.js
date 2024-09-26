@@ -198,6 +198,10 @@ const people = [
   { name: "Jane", age: 25 },
   { name: "Mike", age: 35 },
 ];
+//dec comparing for num
+console.log(people.sort((a, b) => a.age - b.age  ));
+// The localeCompare method is meant for comparing strings
+console.log(people.sort((a, b) => a.name.localeCompare(b.name)));
 
 function bubbleSortByAge(array) {
   for (let i = 0; i < array.length; i++) {
@@ -290,36 +294,18 @@ function removeDuplicates(arr) {
 const inputArray = [{ name: "sai" }, { name: "Nang" }, { name: "sai" }, { name: "Nang" }, { name: "111111" }];
 
 function getUniqueObjects(arr) {
-  let seen = new Set()
-  let uinque = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (!seen.has(arr[i].name)) {
-      seen.add(arr[i].name)
-      uinque.push(arr[i])
+  let unique = []
+    let ob = []
+    for(let i=0;i<arr.length;i++){
+        if(!unique.includes(arr[i].name)){
+           unique.push(arr[i].name)
+           ob.push(arr[i])
+        }
     }
-  }
-
-  return uinque
+    return ob
 }
-
 const uniqueObjects = getUniqueObjects(inputArray);
 console.log(uniqueObjects);
-
-
-function getUniqueObjects1(arr) {
-  let unique = [];
-
-  for (let i = 0; i < arr.length; i++) {
-    if (!unique.some(obj => obj.name === arr[i].name)) {
-      unique.push(arr[i]);
-    }
-  }
-
-  return unique;
-}
-
-const uniqueObjects1 = getUniqueObjects1(inputArray);
-console.log(uniqueObjects1);
 
 
 // 10. find the duplicates from array
@@ -349,6 +335,18 @@ const abc = newArray.reduce((acc, curr) => {
 }, {});
 
 
+// 12.  write a javascript function to count the occurrences of each character in the string
+
+const inputString1 = "javascript";
+const count = inputString1.split('').reduce((acc, curr) => {
+  acc[curr] = acc[curr] ? acc[curr] + 1 : 1
+  return acc
+
+}, {})
+
+console.log(count)
+
+
 
 // find the largest three numbers in an array
 function largestThree(arr) {
@@ -362,20 +360,6 @@ function largestThree(arr) {
 // Example usage
 const numbers = [4, 1, 7, 2, 3, 8, 4, 5];
 console.log(largestThree(numbers)); // Output: [8, 7, 5]
-
-
-
-
-// 12.  write a javascript function to count the occurrences of each character in the string
-
-const inputString1 = "javascript";
-const count = inputString1.split('').reduce((acc, curr) => {
-  acc[curr] = acc[curr] ? acc[curr] + 1 : 1
-  return acc
-
-}, {})
-
-console.log(count)
 
 
 
@@ -559,19 +543,19 @@ function factorial(n) {
 
 
 // 26. find the longest word in a given sentence
-
-
-function findLongestWord(sentence) {
-  return sentence
-    .split(' ')               // Split the sentence into an array of words
-    .reduce((longest, word) =>
-      word.length > longest.length ? word : longest, ''); // Compare and find the longest word
-}
-
-// Example usage:
 const sentence = "JavaScript is a versatile programming language.";
-const longest = findLongestWord(sentence);
-console.log(`The longest word is: ${longest}`);
+function lonest (sentances) {
+  const word = sentances.split(' ')
+  let long = ''
+  for(let i=0;i<word.length;i++){
+      if(word[i].length > long.length){
+          long=word[i]
+      }
+  }
+  return long
+
+}
+console.log(lonest(sentence))
 
 
 
