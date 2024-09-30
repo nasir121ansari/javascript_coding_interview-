@@ -98,3 +98,21 @@ if (a === b && b === c) {
     console.log("hello");
 }
 
+
+
+//----------------------------------------- question 7-----------
+const arr = [1,2,3,4,5]
+const mapOutPut = arr.map(((num,i) => num>3 && num))
+console.log(mapOutPut) // [ false, false, false, 4, 5 ]
+const mapOutPut1 = arr.map(((num,i) => num>3))
+console.log(mapOutPut1) // [ false, false, false, true, true ]
+
+
+const filterOutPut = arr.filter(((num,i) => num>3 && num))
+console.log(filterOutPut) // [ 4, 5 ]
+const filterOutPut1 = arr.filter(((num,i) => num>3))
+console.log(filterOutPut1) // [ 4, 5]
+
+// foreach does not return new array , it just executes the provided function on each element
+const forEachOutPut = arr.forEach(((num,i) => num>3 && num))
+console.log(forEachOutPut) //undefined

@@ -733,3 +733,33 @@ console.log(reallyCoolFn(3)(2)(5)(8)); // Output: 80
 console.log(reallyCoolFn(2)(1)(4));    // Output: 4
 
 
+
+function findMostRepeated(input) {
+  let mostRepeatedNum = null;
+  let maxCount = 0;
+
+  // Loop through each number in the array
+  for (let i = 0; i < input.length; i++) {
+      let count = 0; // Count occurrences of the current number
+      for (let j = 0; j < input.length; j++) {
+          if (input[i] === input[j]) {
+              count++;
+          }
+      }
+
+      // Update most repeated number if needed
+      if (count > maxCount) {
+          maxCount = count;
+          mostRepeatedNum = input[i];
+      }
+  }
+
+  return mostRepeatedNum;
+}
+
+// Example usage
+const input = [3, 2, 3];
+const output21 = findMostRepeated(input);
+console.log(output21); // Output: 3
+
+
