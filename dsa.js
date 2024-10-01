@@ -443,6 +443,7 @@ let testStr2 = "hello";
 // console.log(isPalindrome(testStr1)); // Output: true
 // console.log(isPalindrome(testStr2)); // Output: false
 
+
 // 18.  Program to check the given strings are anagram or not  OR    Given two strings. Find if one string can be formed by rearranging the letters of other string.
 function areAnagrams(str1, str2) {
   if (str1.length !== str2.length) {
@@ -457,6 +458,122 @@ function areAnagrams(str1, str2) {
 str1 = "hello";
 str2 = "world";
 console.log(areAnagrams(str1, str2)); // false
+
+/*
+33.Write a function that takes N and subsequent N parameters and gives the multiplication result. 
+reallyCoolFn(N)(n1)(n2)(n3)(ni) // output → n1 * n2 * … * ni
+reallyCoolFn(3)(2)(5)(8) // output → 80
+reallyCoolFn(2)(1)(4) // output → 4/
+*/
+
+function reallyCoolFn(N) {
+  let product = 1;
+
+  function next(n) {
+      product *= n;
+      N--;
+      return N > 0 ? next : product;
+  }
+
+  return next;
+}
+
+// Example usage:
+console.log(reallyCoolFn(3)(2)(5)(8)); // Output: 80
+console.log(reallyCoolFn(2)(1)(4));    // Output: 4
+
+
+// -----------------------------------------------------------------
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+function curry(fn) {
+  return function curried(...args) {
+      // Check how many arguments have been provided
+      if (args.length >= fn.length) {
+          return fn.apply(this, args); // Call the original function if enough arguments
+      } else {
+          // Return a new function expecting more arguments
+          return function(...args2) {
+              return curried.apply(this, args.concat(args2)); // Combine the arguments
+          };
+      }
+  };
+}
+
+let curriedSum = curry(sum);
+console.log(curriedSum(1, 2, 3));  // Output: 6
+console.log(curriedSum(1)(2, 3));  // Output: 6
+console.log(curriedSum(1)(2)(3));  // Output: 6
+console.log(curriedSum(1, 2));     // Output: function (still expecting one more argument)
+
+
+// ---------------------------------------------------------------------------------------------------
+function findMostRepeated(input) {
+  let mostRepeatedNum = null;
+  let maxCount = 0;
+
+  // Loop through each number in the array
+  for (let i = 0; i < input.length; i++) {
+      let count = 0; // Count occurrences of the current number
+      for (let j = 0; j < input.length; j++) {
+          if (input[i] === input[j]) {
+              count++;
+          }
+      }
+
+      // Update most repeated number if needed
+      if (count > maxCount) {
+          maxCount = count;
+          mostRepeatedNum = input[i];
+      }
+  }
+
+  return mostRepeatedNum;
+}
+
+// Example usage
+const input = [3, 2, 3];
+const output21 = findMostRepeated(input);
+console.log(output21); // Output: 3
+
+
+
+// 30.
+
+let items = [
+  {
+  subItems : [
+  {id : 1, itemName: "Item1"},
+  {id : 2, itemName: "Item2"},
+  {id : 1, itemName: "Item1"}
+                  ]
+  },
+  {
+  subItems : [
+  {id : 1, itemName: "Item1"},
+  {id : 2, itemName: "Item2"},
+  {id : 1, itemName: "Item1"}
+                  ]
+  }
+  ]
+  /*
+  Filter the objects with id 1
+  Expected output is : 
+  [
+  {id : 1, itemName: ""Item1""},
+  {id : 1, itemName: ""Item1""},
+  {id : 1, itemName: ""Item1""},
+  {id : 1, itemName: ""Item1""},
+  ]
+  */
+  
+  const filteredItems = items.flatMap(obj => obj.subItems.filter(item => item.id=== 1))
+  console.log(filteredItems)
+
+
+
 
 // console.log(isAnagram("mary", "army"));
 
@@ -537,10 +654,6 @@ function factorial(n) {
 }
 
 // console.log(factorial(5))
-
-
-
-
 
 // 26. find the longest word in a given sentence
 const sentence = "JavaScript is a versatile programming language.";
@@ -650,37 +763,6 @@ console.log(convertToAnobject1)
 
 
 
-// 30.
-
-let items = [
-  {
-  subItems : [
-  {id : 1, itemName: "Item1"},
-  {id : 2, itemName: "Item2"},
-  {id : 1, itemName: "Item1"}
-                  ]
-  },
-  {
-  subItems : [
-  {id : 1, itemName: "Item1"},
-  {id : 2, itemName: "Item2"},
-  {id : 1, itemName: "Item1"}
-                  ]
-  }
-  ]
-  /*
-  Filter the objects with id 1
-  Expected output is : 
-  [
-  {id : 1, itemName: ""Item1""},
-  {id : 1, itemName: ""Item1""},
-  {id : 1, itemName: ""Item1""},
-  {id : 1, itemName: ""Item1""},
-  ]
-  */
-  
-  const filteredItems = items.flatMap(obj => obj.subItems.filter(item => item.id=== 1))
-  console.log(filteredItems)
 
 // 31.
   const matrix = [
@@ -709,57 +791,6 @@ console.log(sumOfDiagonal(matrix,dimension))
 
 
 
-/*
-33.Write a function that takes N and subsequent N parameters and gives the multiplication result. 
-reallyCoolFn(N)(n1)(n2)(n3)(ni) // output → n1 * n2 * … * ni
-reallyCoolFn(3)(2)(5)(8) // output → 80
-reallyCoolFn(2)(1)(4) // output → 4/
-*/
 
-function reallyCoolFn(N) {
-  let product = 1;
-
-  function next(n) {
-      product *= n;
-      N--;
-      return N > 0 ? next : product;
-  }
-
-  return next;
-}
-
-// Example usage:
-console.log(reallyCoolFn(3)(2)(5)(8)); // Output: 80
-console.log(reallyCoolFn(2)(1)(4));    // Output: 4
-
-
-
-function findMostRepeated(input) {
-  let mostRepeatedNum = null;
-  let maxCount = 0;
-
-  // Loop through each number in the array
-  for (let i = 0; i < input.length; i++) {
-      let count = 0; // Count occurrences of the current number
-      for (let j = 0; j < input.length; j++) {
-          if (input[i] === input[j]) {
-              count++;
-          }
-      }
-
-      // Update most repeated number if needed
-      if (count > maxCount) {
-          maxCount = count;
-          mostRepeatedNum = input[i];
-      }
-  }
-
-  return mostRepeatedNum;
-}
-
-// Example usage
-const input = [3, 2, 3];
-const output21 = findMostRepeated(input);
-console.log(output21); // Output: 3
 
 
