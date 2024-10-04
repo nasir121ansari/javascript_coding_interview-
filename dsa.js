@@ -1,5 +1,4 @@
 // 1.Write a JavaScript program to flatten a nested Array / Write a JavaScript program to find the largest element in a nested array.
-
 let array = [1, 2, 3, [5, 6, [7, 8]], 9, 10];
 let output = [];
 function flatten(arr) {
@@ -26,7 +25,7 @@ console.log(largestElemnet);
 let flatArray = array.flat(Infinity);
 // console.log(flatArray);
 
-
+// -------------------------------------------------------------------------------------------------------------------
 // 2. convert nested object into a flat object 
 
 const object = {
@@ -119,6 +118,7 @@ const flattenObj = (ob) => {
 	return final;
 };
 
+// -------------------------------------------------------------------------------------------------------
 // 3.  revrer each word of string 
 // input :- Welcome to the team Nasir Ansari
 // output :- emocleW ot eht maet risaN irasnA
@@ -467,27 +467,35 @@ reallyCoolFn(2)(1)(4) // output → 4/
 */
 
 function reallyCoolFn(N) {
-  let product = 1;
-
-  function next(n) {
-      product *= n;
-      N--;
-      return N > 0 ? next : product;
+  // Initialize a variable to store the product
+  let product = 1; 
+  let count = 0; // Counter to track how many numbers have been provided
+  // Inner function to handle multiplication
+  function multiply(n) {
+      product *= n; // Multiply the current product by the new number
+      count++; // Increment the count of numbers provided
+      // If we have received N numbers, return the product directly
+      if (count === N) {
+          return product; // Return the final product when expected numbers are provided
+      }
+      return multiply; // Allow further chaining for more numbers
   }
 
-  return next;
+  return multiply; // Return the inner function for chaining
 }
 
-// Example usage:
+// Example usages:
 console.log(reallyCoolFn(3)(2)(5)(8)); // Output: 80
-console.log(reallyCoolFn(2)(1)(4));    // Output: 4
+console.log(reallyCoolFn(2)(1)(4)); // Output: 4
+
+
+
 
 
 // -----------------------------------------------------------------
 function sum(a, b, c) {
   return a + b + c;
 }
-
 function curry(fn) {
   return function curried(...args) {
       // Check how many arguments have been provided
