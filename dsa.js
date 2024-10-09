@@ -1,4 +1,4 @@
-// 1.Write a JavaScript program to flatten a nested Array / Write a JavaScript program to find the largest element in a nested array.
+//---------------- 1.Write a JavaScript program to flatten a nested Array / Write a JavaScript program to find the largest element in a nested array.----------
 let array = [1, 2, 3, [5, 6, [7, 8]], 9, 10];
 let output = [];
 function flatten(arr) {
@@ -21,13 +21,15 @@ let largestElemnet = flatArrays.reduce((prev, curr) => {
 });
 console.log(largestElemnet);
 
+//second way
+let newO = flat(array)
+console.log(Math.max(...newO))
+
 
 let flatArray = array.flat(Infinity);
 // console.log(flatArray);
 
-// -------------------------------------------------------------------------------------------------------------------
-// 2. convert nested object into a flat object 
-
+// -----------------------------------------------2. convert nested object into a flat object--------------------------------------------------------------------
 const object = {
   name: 'Nasir',
   address: {
@@ -103,19 +105,19 @@ out put  = {
 */
 
 const flattenObj = (ob) => {
-	let final = {};
-	for (const i in ob) {
-		if ((typeof ob[i]) === 'object') {
-			const temp = flattenObj(ob[i]);
-			for (const j in temp) {
-				final[i + '_' + j] = temp[j];
-			}
-		}
-		else {
-			final[i] = ob[i];
-		}
-	}
-	return final;
+  let final = {};
+  for (const i in ob) {
+    if ((typeof ob[i]) === 'object') {
+      const temp = flattenObj(ob[i]);
+      for (const j in temp) {
+        final[i + '_' + j] = temp[j];
+      }
+    }
+    else {
+      final[i] = ob[i];
+    }
+  }
+  return final;
 };
 
 // -------------------------------------------------------------------------------------------------------
@@ -192,6 +194,58 @@ function shortArray(array) {
 // console.log(shortArray(newArray));
 
 
+
+//---------------------------------------------
+// Input:
+let array11 = [
+  { 'name': 'ravi', 'id': 1 },
+  { 'name': 'david', 'id': 2 },
+  { 'name': 'john', 'id': 3 }
+];
+let array2222 = [
+  { 'class': 'first', 'id': 1 },
+  { 'class': 'second', 'id': 2 },
+  { 'class': 'third', 'id': 3 }
+]
+
+// output:
+// {'ravi': 'first', 'david': 'second', 'john': 'third'}
+function mapNamesToClassesUsingLoop(array1, array2) {
+  let result = {};
+  
+  for (let i = 0; i < array1.length; i++) {
+    for (let j = 0; j < array2.length; j++) {
+      if (array1[i].id === array2[j].id) {
+        result[array1[i].name] = array2[j].class;
+        break; // Exit the inner loop when a match is found
+      }
+    }
+  }
+  
+  return result;
+}
+
+let resultsss = mapNamesToClassesUsingLoop(array11, array2222);
+console.log(resultsss);
+
+
+function mapNamesToClasses(array1, array2) {
+  let result = {};
+  
+  array1.forEach(item1 => {
+    let match = array2.find(item2 => item2.id === item1.id);
+    if (match) {
+      result[item1.name] = match.class;
+    }
+  });
+  
+  return result;
+}
+
+let result = mapNamesToClasses(array11, array2222);
+console.log(result);
+
+
 // 6. sort an object 
 const people = [
   { name: "John", age: 30 },
@@ -199,7 +253,7 @@ const people = [
   { name: "Mike", age: 35 },
 ];
 //dec comparing for num
-console.log(people.sort((a, b) => a.age - b.age  ));
+console.log(people.sort((a, b) => a.age - b.age));
 // The localeCompare method is meant for comparing strings
 console.log(people.sort((a, b) => a.name.localeCompare(b.name)));
 
@@ -281,8 +335,8 @@ let uniqueArray1 = newArray1.filter(
 function removeDuplicates(arr) {
   let uniqueArray = [];
   for (let i = 0; i < arr.length; i++) {
-    if (!uniqueArray.includes(arr[i])) { 
-      uniqueArray.push(arr[i]); 
+    if (!uniqueArray.includes(arr[i])) {
+      uniqueArray.push(arr[i]);
     }
   }
   return uniqueArray;
@@ -295,14 +349,14 @@ const inputArray = [{ name: "sai" }, { name: "Nang" }, { name: "sai" }, { name: 
 
 function getUniqueObjects(arr) {
   let unique = []
-    let ob = []
-    for(let i=0;i<arr.length;i++){
-        if(!unique.includes(arr[i].name)){
-           unique.push(arr[i].name)
-           ob.push(arr[i])
-        }
+  let ob = []
+  for (let i = 0; i < arr.length; i++) {
+    if (!unique.includes(arr[i].name)) {
+      unique.push(arr[i].name)
+      ob.push(arr[i])
     }
-    return ob
+  }
+  return ob
 }
 const uniqueObjects = getUniqueObjects(inputArray);
 console.log(uniqueObjects);
@@ -468,17 +522,17 @@ reallyCoolFn(2)(1)(4) // output → 4/
 
 function reallyCoolFn(N) {
   // Initialize a variable to store the product
-  let product = 1; 
+  let product = 1;
   let count = 0; // Counter to track how many numbers have been provided
   // Inner function to handle multiplication
   function multiply(n) {
-      product *= n; // Multiply the current product by the new number
-      count++; // Increment the count of numbers provided
-      // If we have received N numbers, return the product directly
-      if (count === N) {
-          return product; // Return the final product when expected numbers are provided
-      }
-      return multiply; // Allow further chaining for more numbers
+    product *= n; // Multiply the current product by the new number
+    count++; // Increment the count of numbers provided
+    // If we have received N numbers, return the product directly
+    if (count === N) {
+      return product; // Return the final product when expected numbers are provided
+    }
+    return multiply; // Allow further chaining for more numbers
   }
 
   return multiply; // Return the inner function for chaining
@@ -498,15 +552,15 @@ function sum(a, b, c) {
 }
 function curry(fn) {
   return function curried(...args) {
-      // Check how many arguments have been provided
-      if (args.length >= fn.length) {
-          return fn.apply(this, args); // Call the original function if enough arguments
-      } else {
-          // Return a new function expecting more arguments
-          return function(...args2) {
-              return curried.apply(this, args.concat(args2)); // Combine the arguments
-          };
-      }
+    // Check how many arguments have been provided
+    if (args.length >= fn.length) {
+      return fn.apply(this, args); // Call the original function if enough arguments
+    } else {
+      // Return a new function expecting more arguments
+      return function (...args2) {
+        return curried.apply(this, args.concat(args2)); // Combine the arguments
+      };
+    }
   };
 }
 
@@ -524,18 +578,18 @@ function findMostRepeated(input) {
 
   // Loop through each number in the array
   for (let i = 0; i < input.length; i++) {
-      let count = 0; // Count occurrences of the current number
-      for (let j = 0; j < input.length; j++) {
-          if (input[i] === input[j]) {
-              count++;
-          }
+    let count = 0; // Count occurrences of the current number
+    for (let j = 0; j < input.length; j++) {
+      if (input[i] === input[j]) {
+        count++;
       }
+    }
 
-      // Update most repeated number if needed
-      if (count > maxCount) {
-          maxCount = count;
-          mostRepeatedNum = input[i];
-      }
+    // Update most repeated number if needed
+    if (count > maxCount) {
+      maxCount = count;
+      mostRepeatedNum = input[i];
+    }
   }
 
   return mostRepeatedNum;
@@ -552,33 +606,33 @@ console.log(output21); // Output: 3
 
 let items = [
   {
-  subItems : [
-  {id : 1, itemName: "Item1"},
-  {id : 2, itemName: "Item2"},
-  {id : 1, itemName: "Item1"}
-                  ]
+    subItems: [
+      { id: 1, itemName: "Item1" },
+      { id: 2, itemName: "Item2" },
+      { id: 1, itemName: "Item1" }
+    ]
   },
   {
-  subItems : [
-  {id : 1, itemName: "Item1"},
-  {id : 2, itemName: "Item2"},
-  {id : 1, itemName: "Item1"}
-                  ]
+    subItems: [
+      { id: 1, itemName: "Item1" },
+      { id: 2, itemName: "Item2" },
+      { id: 1, itemName: "Item1" }
+    ]
   }
-  ]
-  /*
-  Filter the objects with id 1
-  Expected output is : 
-  [
-  {id : 1, itemName: ""Item1""},
-  {id : 1, itemName: ""Item1""},
-  {id : 1, itemName: ""Item1""},
-  {id : 1, itemName: ""Item1""},
-  ]
-  */
-  
-  const filteredItems = items.flatMap(obj => obj.subItems.filter(item => item.id=== 1))
-  console.log(filteredItems)
+]
+/*
+Filter the objects with id 1
+Expected output is : 
+[
+{id : 1, itemName: ""Item1""},
+{id : 1, itemName: ""Item1""},
+{id : 1, itemName: ""Item1""},
+{id : 1, itemName: ""Item1""},
+]
+*/
+
+const filteredItems = items.flatMap(obj => obj.subItems.filter(item => item.id === 1))
+console.log(filteredItems)
 
 
 
@@ -665,13 +719,13 @@ function factorial(n) {
 
 // 26. find the longest word in a given sentence
 const sentence = "JavaScript is a versatile programming language.";
-function lonest (sentances) {
+function lonest(sentances) {
   const word = sentances.split(' ')
   let long = ''
-  for(let i=0;i<word.length;i++){
-      if(word[i].length > long.length){
-          long=word[i]
-      }
+  for (let i = 0; i < word.length; i++) {
+    if (word[i].length > long.length) {
+      long = word[i]
+    }
   }
   return long
 
@@ -749,22 +803,22 @@ console.log(resultss);
 
 let strVal = "a,1,b,2,c,3"
 // output={a:1, b:2,c:3}
-const convertToAnobject = strVal.split(',').reduce((acc,curr,index,arr) => {
-  if(index % 2 === 0){
-      acc[curr] = parseInt(arr[index + 1])
+const convertToAnobject = strVal.split(',').reduce((acc, curr, index, arr) => {
+  if (index % 2 === 0) {
+    acc[curr] = parseInt(arr[index + 1])
   }
-  return acc  
-},{})
+  return acc
+}, {})
 console.log(convertToAnobject)
 
 let strVal1 = "a.1,b.2,c.3"
 // output={a:1, b:2,c:3}
-const convertToAnobject1 = strVal1.split(',').reduce((acc,curr) => {
-    let [key,value] = curr.split('.')
-    acc[key] = value
-    return acc;
-    
-},{})
+const convertToAnobject1 = strVal1.split(',').reduce((acc, curr) => {
+  let [key, value] = curr.split('.')
+  acc[key] = value
+  return acc;
+
+}, {})
 
 console.log(convertToAnobject1)
 
@@ -773,25 +827,25 @@ console.log(convertToAnobject1)
 
 
 // 31.
-  const matrix = [
-    [1,2,3,4],
-    [5,6,7,8],
-    [9,10,11,12],
-    [13,14,15,16]
-    ]
+const matrix = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 16]
+]
 const dimension = 4
-function sumOfDiagonal (matrix,dimension) {
-    let sum = 0;
-    let sum1 = 0
-    for(let i=0;i<dimension;i++){
-        sum += matrix[i][i]
-        sum1 +=matrix[i][dimension -i -1]
-    }
-    
-    return sum + sum1
+function sumOfDiagonal(matrix, dimension) {
+  let sum = 0;
+  let sum1 = 0
+  for (let i = 0; i < dimension; i++) {
+    sum += matrix[i][i]
+    sum1 += matrix[i][dimension - i - 1]
+  }
+
+  return sum + sum1
 }
 
-console.log(sumOfDiagonal(matrix,dimension))
+console.log(sumOfDiagonal(matrix, dimension))
 
 
 

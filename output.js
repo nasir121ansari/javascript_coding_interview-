@@ -116,3 +116,45 @@ console.log(filterOutPut1) // [ 4, 5]
 // foreach does not return new array , it just executes the provided function on each element
 const forEachOutPut = arr.forEach(((num,i) => num>3 && num))
 console.log(forEachOutPut) //undefined
+
+
+
+//--------------------------------React out based quetion -----------------------------------------
+
+/*
+Direct State Update: In this snippet, setCount is called three times with the current count value. However, because React batches state updates and processes them asynchronously, all three calls to setCount will use the initial value of count (which is 0 at the time of the effect). Thus, it will set count to 1 three times, but the final result will still be 1.
+*/
+const Component = () => {
+    const [count,setCount] = useState(0)
+
+    useEffect(() => {
+        setCount(count + 1)
+        setCount(count + 1)
+        setCount(count + 1)
+    },[])
+
+    return
+    <div>{count}</div>
+}
+// output - 1
+
+/*
+Functional State Update: This snippet uses a functional update for setCount. Each call to setCount is provided a function that takes the previous state (prevCount) and returns the updated value. This allows each increment to take the most recent value into account, leading to an accurate cumulative result. As a result, count will be incremented from 0 to 1, then to 2, and finally to 3. */
+
+const Components = () => {
+    const [count,setCount] = useState(0)
+
+    useEffect(() => {
+        setCount(prevCount => prevCount + 1);
+        setCount(prevCount => prevCount + 1);
+        setCount(prevCount => prevCount + 1);
+
+    },[])
+
+    return
+    <div>{count}</div>
+}
+
+// output - 3
+
+
