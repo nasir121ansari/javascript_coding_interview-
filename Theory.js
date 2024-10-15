@@ -155,6 +155,34 @@ const filtered = numbers1.filter(num => num > 3);
 console.log(filtered); // Output: [4, 5]
 
 
+/*
+1. slice():
+Purpose: Extracts a portion of an array without changing the original array.
+Returns: A new array with the sliced portion.
+Does not modify the original array.
+Example of slice():
+*/
+
+const arr = [1, 2, 3, 4, 5];
+const slicedArr = arr.slice(1, 4);
+
+console.log(slicedArr);  // [2, 3, 4]
+console.log(arr);        // [1, 2, 3, 4, 5] (original remains unchanged)
 
 
+/*
+
+2. splice():
+Purpose: Adds, removes, or replaces elements in the original array.
+Returns: An array of removed elements.
+Modifies the original array.
+Example of splice() (removing elements):
+
+*/
+
+const arrr = [1, 2, 3, 4, 5];
+const removed = arr.splice(1, 2);
+
+console.log(removed);  // [2, 3] (removed elements)
+console.log(arrr);      // [1, 4, 5] (original array is modified)
 
