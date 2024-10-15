@@ -5,7 +5,20 @@ console.log(true + true + true * 3)   // 5
 
 
 // -------------------------------------------------- Question 2 ------------------------------------------------
-console.log(undefined ?? "Nasir")
+//What is Null coalescing?
+
+// Null coalescing is a feature in programming that allows you to provide a default value if a variable is null or undefined. In JavaScript, it's represented by the ?? operator. For example, let result = value ?? 'default'; assigns 'default' to result if value is null or undefined. This ensures that you always have a meaningful value.
+
+
+let userInput = null;
+let defaultValue = 'default value';
+
+let result = userInput ?? defaultValue;
+
+console.log(result); // Output: 'default value'
+
+console.log(undefined ?? "Number")
+console.log(null ?? "Number")
 
 
 // -------------------------------------------------- Question 3 ------------------------------------------------
@@ -30,8 +43,8 @@ counter1.increment();
 const counter2 = createCounter();
 counter2.increment();
 
-console.log(counter1.getCount()); // What will this log?
-console.log(counter2.getCount()); // What will this log?
+console.log(counter1.getCount()); // 2
+console.log(counter2.getCount()); // 1
 
 
 
@@ -40,15 +53,37 @@ console.log(counter2.getCount()); // What will this log?
 
 const obj = {
     name: "Alice",
-    greet: function () {
-        console.log("Hello, " + this.name);
+    greet: function ()  {
+        console.log("Hello, " + obj.name);
+    }
+};
+//When you assign obj.greet to a new variable: greet is just a regular function. It loses the connection to the obj object.this no longer refers to obj.Instead, this defaults to the global object
+const greet = obj.greet;
+greet(); // Hello, undefined
+
+//  we can access directly 
+obj.greet() // Hello, Alice
+
+// or second way 
+const greets = obj.greet.bind(obj);  // Bind `this` to `obj`
+// greets();  // Hello, Alice
+
+
+
+// in case of arrow function
+const obj1 = {
+    name: "Alice",
+    greet:  ()  =>  {
+        console.log("Hello, " + obj1.name);
     }
 };
 
-const greet = obj.greet;
-greet(); // What will this log?
 
+const greetss = obj1.greet;
+greetss(); // Hello, undefined
 
+// we can access directly 
+obj1.greet() // Hello, Alice
 
 
 
@@ -90,7 +125,7 @@ myFunction()
 
 //---------------------------------------------  Question 6 ---------------------------------------------
 const a = 10, b = 10, c = 10;
-if (a = b = c) {  // This is an assignment, not a comparison
+if (a === b === c) {  // This is an assignment, not a comparison
     console.log("hello");
 }
 

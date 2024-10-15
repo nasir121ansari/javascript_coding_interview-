@@ -59,26 +59,9 @@ function flatObject(obj, name) {
       output2[name + "_" + key] = obj[key]
     }
   }
+  return output2
 }
-
-flatObject(object, "student")
-// console.log(output2)
-
-
-const flattenObjs = (ob, name) => {
-  let final = {};
-  for (const i in ob) {
-    if (typeof ob[i] === 'object' && ob[i] !== null && !Array.isArray(ob[i])) {
-      const temp = flattenObj(ob[i], name + "_" + i); // Recursive call
-      for (const j in temp) {
-        final[j] = temp[j]; // Copy flattened keys
-      }
-    } else {
-      final[name + "_" + i] = ob[i]; // Add simple key-value pair
-    }
-  }
-  return final;
-};
+console.log(flatObject(object, "student"))
 
 
 const objectss = {

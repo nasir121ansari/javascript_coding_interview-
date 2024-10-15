@@ -56,23 +56,6 @@ Impure Functions:
 
 
 
-//What is Null coalescing?
-
-// Null coalescing is a feature in programming that allows you to provide a default value if a variable is null or undefined. In JavaScript, it's represented by the ?? operator. For example, let result = value ?? 'default'; assigns 'default' to result if value is null or undefined. This ensures that you always have a meaningful value.
-
-
-let userInput = null;
-let defaultValue = 'default value';
-
-let result = userInput ?? defaultValue;
-
-console.log(result); // Output: 'default value'
-
-console.log(undefined ?? "Number")
-console.log(null ?? "Number")
-
-
-
 
 
 // what is NAN ?
