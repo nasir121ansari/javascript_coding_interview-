@@ -186,3 +186,70 @@ const removed = arr.splice(1, 2);
 console.log(removed);  // [2, 3] (removed elements)
 console.log(arrr);      // [1, 4, 5] (original array is modified)
 
+/*
+
+Use **slice()** when you need a copy or subset of an array without changing the original.
+Use **splice()** when you need to add, remove, or replace elements directly in the original array.
+*/
+
+
+
+
+//------------------------------------------------------------------------------------------------------
+// the .sort() method works in JavaScript. By default, the Array.prototype.sort() method sorts elements as strings, even if they are numbers.
+let newArray = [2, 1, 8, 6];
+console.log(newArray.sort()); // Output: [1, 2, 6, 8]
+// Since all numbers in this array have single digits, sorting them as strings gives the correct numeric order.
+
+
+let newArray1 = [2, 100, 80, 6];
+console.log(newArray1.sort()); // Output: [100, 2, 6, 80]
+
+/*
+Here, .sort() compares the elements as strings:
+
+"100" comes before "2" because string comparisons are lexicographical (character by character).
+Hence, it doesn't sort in numeric order.
+
+*/
+
+//------------------------------------------------------------------------------------------------------------------
+// push(), pop(), shift(), and unshift()
+/*
+
+Method	   Action	               ExampleInput	          Example Output
+push()	   Add to the end	       [1, 2] → push(3)	      [1, 2, 3]
+pop()	     Remove from the end	 [1, 2, 3] → pop()	    [1, 2] (returns 3)
+shift()   Remove from the start	 [1, 2, 3] → shift()    [2, 3] (returns 1)
+unshift()	Add to the start	     [2, 3] → unshift(1)	  [1, 2, 3]
+
+*/
+
+
+//---------------------------------------------------------------------------------
+// To find the character 's' in the string "nasir"
+
+// 1. Using indexOf()
+const name = "nasir";
+const index = name.indexOf('s');
+console.log(index); // Output: 2 (index of 's')
+
+
+// 2. Using includes()
+
+const names = "nasir";
+const hasS = names.includes('s');
+console.log(hasS); // Output: true
+
+// 3. Using charAt() with a Loop (if needed)
+const namess = "nasir";
+for (let i = 0; i < namess.length; i++) {
+  if (namess.charAt(i) === 's') {
+    console.log(`'s' found at index ${i}`);
+  }
+}
+// Output: 's' found at index 2
+
+
+
+
