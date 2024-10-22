@@ -251,5 +251,20 @@ for (let i = 0; i < namess.length; i++) {
 // Output: 's' found at index 2
 
 
+/*
+//----------------------------------------------what happens when a web page renders behind the scene-------------------------------
+DNS resolution translates the domain name into an IP address.
+The browser establishes a TCP connection and TLS handshake (if HTTPS).
+Browser sends a request to the server.
+Server responds with HTML, CSS, JavaScript, and assets.
+Browser parses HTML and CSS to build the DOM and CSSOM.
+It executes JavaScript for interactivity.
+Browser renders the page by creating the Render Tree and displaying pixels.
+Bootstrapping happens, where frameworks like React or Angular initialize the page.
+API calls are made to fetch dynamic data asynchronously.
+Extra assets load in the background, and API responses update the DOM if needed.
+If new content is added, repaints or reflows may occur to reflect changes.
+
+*/
 
 
