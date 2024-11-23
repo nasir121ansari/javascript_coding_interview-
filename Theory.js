@@ -225,32 +225,6 @@ unshift()	Add to the start	     [2, 3] → unshift(1)	  [1, 2, 3]
 
 */
 
-
-//---------------------------------------------------------------------------------
-// To find the character 's' in the string "nasir"
-
-// 1. Using indexOf()
-const name = "nasir";
-const index = name.indexOf('s');
-console.log(index); // Output: 2 (index of 's')
-
-
-// 2. Using includes()
-
-const names = "nasir";
-const hasS = names.includes('s');
-console.log(hasS); // Output: true
-
-// 3. Using charAt() with a Loop (if needed)
-const namess = "nasir";
-for (let i = 0; i < namess.length; i++) {
-  if (namess.charAt(i) === 's') {
-    console.log(`'s' found at index ${i}`);
-  }
-}
-// Output: 's' found at index 2
-
-
 /*
 //----------------------------------------------what happens when a web page renders behind the scene-------------------------------
 DNS resolution translates the domain name into an IP address.

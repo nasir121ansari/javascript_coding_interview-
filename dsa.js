@@ -1276,6 +1276,61 @@ const evenNumbers = filterEvenNumbers(numbersArray);
 console.log(evenNumbers); // Output: [2, 4, 6, 8, 10]
 
 
+/*
+Given an array of items, each with a name and category property, write a function to group the items by category. The result should be an object where each key is a category and the value is an array of items in that category."
+Input:
+Expected Output:
+{
+Fruit: [{ name: "Apple", category: "Fruit" }, { name: "Banana", category: "Fruit" }],
+Electronics: [{ name: "Laptop", category: "Electronics" }, { name: "Smartphone", category: "Electronics" }],
+Vegetable: [{ name: "Carrot", category: "Vegetable" }, { name: "Lettuce", category: "Vegetable" }]
+}
+*/
+const itemss = [
+  { name: "Apple", category: "Fruit" },
+  { name: "Banana", category: "Fruit" },
+  { name: "Laptop", category: "Electronics" },
+  { name: "Carrot", category: "Vegetable" },
+  { name: "Smartphone", category: "Electronics" },
+  { name: "Lettuce", category: "Vegetable" }
+  ];
+  
+  function group (items){
+      let result = {}
+      items.forEach(item => {
+          if(!result[item.category]){
+              result[item.category] = []
+          }
+          result[item.category].push(item)
+      })
+      return result;
+  }
+  
+  console.log(group(itemss))
+
+  /*
+  "Given an array of product objects with name, price, and category properties, write a function to return a list of discounted prices (10% off) for all products in the 'Electronics' category that cost more than $100."
+  Input:
+  Expected Output:
+  [1080, 720, 270]
+  */
+  
+  const products = [
+  { name: "Laptop", price: 1200, category: "Electronics" },
+  { name: "Headphones", price: 80, category: "Electronics" },
+  { name: "Shoes", price: 60, category: "Fashion" },
+  { name: "Smartphone", price: 800, category: "Electronics" },
+  { name: "TV", price: 300, category: "Electronics" },
+  { name: "Book", price: 20, category: "Stationery" }
+  ];
+  function electronicsDiscountPrice (products) {
+      return products
+      .filter(product => product.category === "Electronics" && product.price > 100)
+      .map(product => product.price * 0.9)
+  }
+  
+  console.log(electronicsDiscountPrice(products))
+
 
 
 
