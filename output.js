@@ -271,3 +271,24 @@ const Components = () => {
 // output - 3
 
 
+
+//------------------------------------what is the output
+ const object = {
+    1 : "str1",
+    2:  "str2",
+    "1" : "Str3",
+  }
+  
+  console.log(object)
+
+  // output 
+  /*
+  {
+    1: "Str3",
+    2: "str2"
+  }
+    */
+
+//   In JavaScript objects, keys are treated as strings. So, the keys 1 and "1" are considered the same.
+// When the object is created, the key 1 is assigned the value "str1", but it is later overwritten by the value "Str3" because "1" and 1 are treated as the same key.
+  
